@@ -5,20 +5,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 
 public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.myViewHolder>{
-    private Product[] listdata;
+    private ArrayList<Product> listdata;
 
-    // RecyclerView recyclerView;
-    public MyListAdapter(Product[] listdata) {
+    public MyListAdapter(ArrayList<Product> listdata) {
         this.listdata = listdata;
     }
     @Override
@@ -31,9 +29,9 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.myViewHold
 
     @Override
     public void onBindViewHolder(myViewHolder holder, int position) {
-        final Product myListData = listdata[position];
-        holder.textView.setText(listdata[position].getName());
-        holder.imageView.setImageResource (listdata[position].getImage());
+        final Product myListData = listdata.get(position);
+        holder.textView.setText(listdata.get(position).getName());
+        holder.imageView.setImageResource (listdata.get(position).getImage());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,7 +42,7 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.myViewHold
 
     @Override
     public int getItemCount() {
-        return listdata.length;
+        return listdata.size();
     }
 
     public static class myViewHolder extends RecyclerView.ViewHolder {
