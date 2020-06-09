@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Parcelable;
 import android.widget.SearchView;
 
 import java.util.ArrayList;
@@ -15,6 +18,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     SearchView editsearch;
     ArrayList<Product> products = new ArrayList<>();
     MyListAdapter adapter;
+    RecyclerView recyclerView;
+    private Parcelable mListState = null;
+    private static Bundle mBundleRecyclerViewState;
+    private final String KEY_RECYCLER_STATE = "recycler_state";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +31,26 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         editsearch = findViewById(R.id.search);
         editsearch.setOnQueryTextListener(this);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mBundleRecyclerViewState = new Bundle();
+
+        if (savedInstanceState != null) {
+            products = savedInstanceState.getParcelableArrayList("products");
+        }
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         adapter = new MyListAdapter(products);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+
+
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putParcelableArrayList("products", products);
+    }
 
     private int getIdFromName(String name){
         return getResources().getIdentifier(name , "drawable", getPackageName());
@@ -47,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         adapter.notifyDataSetChanged();
         return false;
     }
+
+
 
     @Override
     public boolean onQueryTextChange(String newText) {
