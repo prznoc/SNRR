@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         }
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        adapter = new MyListAdapter(products);
+        adapter = new MyListAdapter(this ,products);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);

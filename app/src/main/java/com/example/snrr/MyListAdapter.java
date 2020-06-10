@@ -1,5 +1,7 @@
 package com.example.snrr;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +17,13 @@ import java.util.ArrayList;
 
 public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.myViewHolder>{
     private ArrayList<Product> listdata;
+    private Context context;
 
-    public MyListAdapter(ArrayList<Product> listdata) {
+
+
+    public MyListAdapter(Context context, ArrayList<Product> listdata) {
         this.listdata = listdata;
+        this.context = context;
     }
     @Override
     public myViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -34,10 +40,13 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.myViewHold
         String _price = String.format("%.2f", listdata.get(position).getPrice()) + "zł";
         holder.price.setText(_price);
         holder.imageView.setImageResource (listdata.get(position).getImage());
+        final Intent intent = new Intent(context, ProductActivity.class);
+        intent.putExtra("product", myListData);
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(),"click on item: "+myListData.getDescription(),Toast.LENGTH_LONG).show();
+
+                context.startActivity(intent);
             }
         });
     }
