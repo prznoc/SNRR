@@ -31,6 +31,8 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.myViewHold
     public void onBindViewHolder(myViewHolder holder, int position) {
         final Product myListData = listdata.get(position);
         holder.textView.setText(listdata.get(position).getName());
+        String _price = String.format("%.2f", listdata.get(position).getPrice()) + "zł";
+        holder.price.setText(_price);
         holder.imageView.setImageResource (listdata.get(position).getImage());
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,11 +50,13 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.myViewHold
     public static class myViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
         public TextView textView;
+        public TextView price;
         public FrameLayout cardview;
         public myViewHolder(View itemView) {
             super(itemView);
             this.imageView = (ImageView) itemView.findViewById(R.id.imageView);
             this.textView = (TextView) itemView.findViewById(R.id.textView);
+            this.price = itemView.findViewById(R.id.price);
             cardview = (FrameLayout)itemView.findViewById(R.id.linearLayout);
         }
     }
