@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //setContentView(R.layout.recycler_content);
 
         editsearch = findViewById(R.id.search);
         editsearch.setOnQueryTextListener(this);
@@ -32,12 +33,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             products = savedInstanceState.getParcelableArrayList("products");
         }
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         adapter = new MyListAdapter(products);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-
 
     }
 
@@ -63,8 +63,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         adapter.notifyDataSetChanged();
         return false;
     }
-
-
 
     @Override
     public boolean onQueryTextChange(String newText) {
