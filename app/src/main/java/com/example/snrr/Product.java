@@ -25,6 +25,18 @@ public class Product implements Parcelable {
         description = in.readString();
     }
 
+    public static final Creator<Product> CREATOR = new Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel in) {
+            return new Product(in);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
+
     public String getName(){
         return this.name;
     }

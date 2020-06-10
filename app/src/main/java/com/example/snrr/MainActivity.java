@@ -19,9 +19,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     ArrayList<Product> products = new ArrayList<>();
     MyListAdapter adapter;
     RecyclerView recyclerView;
-    private Parcelable mListState = null;
-    private static Bundle mBundleRecyclerViewState;
-    private final String KEY_RECYCLER_STATE = "recycler_state";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +27,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         editsearch = findViewById(R.id.search);
         editsearch.setOnQueryTextListener(this);
-
-        mBundleRecyclerViewState = new Bundle();
 
         if (savedInstanceState != null) {
             products = savedInstanceState.getParcelableArrayList("products");
@@ -58,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     @Override
     public boolean onQueryTextSubmit(String query) {
+        editsearch.onActionViewCollapsed();
         products.clear();
         ArrayList<Product> new_products = new ArrayList<Product>(Arrays.asList(
                 new Product(22.2, getIdFromName("chochla"), "chochla", "To jest chochla"),
