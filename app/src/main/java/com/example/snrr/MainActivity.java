@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         editsearch.onActionViewCollapsed();
         products.clear();
         ArrayList<Product> new_products = new ArrayList<Product>(Arrays.asList(
-                new Product(22.2, getIdFromName("chochla"), "chochla", "To jest chochla"),
+                new Product(22.2, getIdFromName("chochla"), "chochla", "To jest chochlabashdbajuhsydgyuashdiuashdniuahduiashdiuashdiuashduiashduiashdiauhdaiusdhiausd" +
+                        "shndiuahduisahjdiadaushdiuashdiuashduiahdiuashdiuadhaisudhasuidhasuidhauisdhaiusdhsiaudhjaiuhsu"),
                 new Product(22.2, getIdFromName("mortar"), "mortar", "This is MORTAR!!!")
         ));
         products.addAll(new_products);
