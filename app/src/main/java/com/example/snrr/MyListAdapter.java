@@ -45,7 +45,6 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.myViewHold
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 context.startActivity(intent);
             }
         });
