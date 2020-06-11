@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         ArrayList<Product> new_products = new ArrayList<Product>(Arrays.asList(
                 new Product(22.2, getIdFromName("chochla"), "chochla", "To jest chochlabashdbajuhsydgyuashdiuashdniuahduiashdiuashdiuashduiashduiashdiauhdaiusdhiausd" +
                         "shndiuahduisahjdiadaushdiuashdiuashduiahdiuashdiuadhaisudhasuidhasuidhauisdhaiusdhsiaudhjaiuhsu"),
-                new Product(22.2, getIdFromName("mortar"), "mortar", "This is MORTAR!!!")
+                new Product(12.2, getIdFromName("mortar"), "mortar", "This is MORTAR!!!")
         ));
         products.addAll(new_products);
         adapter.notifyDataSetChanged();

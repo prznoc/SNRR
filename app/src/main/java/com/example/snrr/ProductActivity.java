@@ -25,8 +25,8 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
-        Intent intent = getIntent();
-        product = intent.getParcelableExtra("product");
+        Intent get_intent = getIntent();
+        product = get_intent.getParcelableExtra("product");
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         Fragment fragment = FirstFragment.newInstance(product);
@@ -43,6 +43,12 @@ public class ProductActivity extends AppCompatActivity {
 
 
         ft.commit();
+
     }
 
+    public void rentProduct(View view){
+        final Intent send_intent = new Intent(this, RentingActivity.class);
+        send_intent.putExtra("product", product);
+        startActivity(send_intent);
+    }
 }
