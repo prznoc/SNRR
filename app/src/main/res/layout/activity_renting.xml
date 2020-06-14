@@ -6,9 +6,137 @@
     android:layout_height="match_parent"
     tools:context=".RentingActivity">
 
-    <TextView
-        android:id="@+id/testTextView"
-        android:layout_width="284dp"
-        android:layout_height="185dp"
-        android:text="skjdnadnaisdnjaoisjdioasjd" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/testTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="skjdnadnaisdnjaoisjdioasjd"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:selectAllOnFocus="true"
+                    android:singleLine="true"
+                    android:text="Name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/testTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/testTextView" />
+
+                <EditText
+                    android:id="@+id/editTextTextEmailAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:selectAllOnFocus="true"
+                    android:singleLine="true"
+                    android:text="EMail"
+                    app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+                    app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+                <EditText
+                    android:id="@+id/editTextPhone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:ems="10"
+                    android:inputType="phone"
+                    android:selectAllOnFocus="true"
+                    android:singleLine="true"
+                    android:text="Phone Number"
+                    app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
+                    app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+
+                <EditText
+                    android:id="@+id/editTextTextPostalAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:ems="10"
+                    android:inputType="textPostalAddress"
+                    android:selectAllOnFocus="true"
+                    android:singleLine="true"
+                    android:text="Postal Address"
+                    app:layout_constraintEnd_toEndOf="@+id/editTextPhone"
+                    app:layout_constraintStart_toStartOf="@+id/editTextPhone"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+
+                <EditText
+                    android:id="@+id/editTextDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:ems="10"
+                    android:inputType="date"
+                    android:selectAllOnFocus="true"
+                    android:singleLine="true"
+                    android:text="Date from YY-MM-DD"
+                    app:layout_constraintEnd_toEndOf="@+id/editTextTextPostalAddress"
+                    app:layout_constraintStart_toStartOf="@+id/editTextTextPostalAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress" />
+
+                <EditText
+                    android:id="@+id/editTextDate2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:ems="10"
+                    android:inputType="date"
+                    android:selectAllOnFocus="true"
+                    android:singleLine="true"
+                    android:text="Date to YY-MM-DD"
+                    app:layout_constraintEnd_toEndOf="@+id/editTextDate"
+                    app:layout_constraintStart_toStartOf="@+id/editTextDate"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Accept our policy"
+                    app:layout_constraintStart_toStartOf="@+id/editTextDate2"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextDate2" />
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:onClick="checkOutOnClick"
+                    android:text="Check Out"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/checkBox" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
