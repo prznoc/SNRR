@@ -1,6 +1,7 @@
 package com.example.snrr;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,11 +25,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BroadcastReceiver br = new OrderBroadcastReceiver();
 
-        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
-        this.registerReceiver(br, filter);
+        startService(new Intent(this,BroadcastReceiverService.class));
 
         setContentView(R.layout.activity_main);
 
