@@ -47,9 +47,5 @@ public class RentingActivity extends AppCompatActivity {
         else{
             Toast.makeText(getApplicationContext(),"Please accept our policy",Toast.LENGTH_LONG).show();
         }
-        //final Intent send_intent = new Intent(this, RentingActivity.class);
-        //send_intent.putExtra("product", product);
-        //startActivity(send_intent);
     }
-
 }

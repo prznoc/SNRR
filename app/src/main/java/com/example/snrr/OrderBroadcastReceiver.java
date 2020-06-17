@@ -48,7 +48,7 @@ public class OrderBroadcastReceiver extends BroadcastReceiver {
             notificationManager.createNotificationChannel(channel);
         }
     }
-    private static class Task extends AsyncTask<String, Integer, String> {
+    /*private static class Task extends AsyncTask<String, Integer, String> {
 
         private final PendingResult pendingResult;
         private final Intent intent;
@@ -74,6 +74,6 @@ public class OrderBroadcastReceiver extends BroadcastReceiver {
             // Must call finish() so the BroadcastReceiver can be recycled.
             pendingResult.finish();
         }
-    }
+    }*/
 }
 

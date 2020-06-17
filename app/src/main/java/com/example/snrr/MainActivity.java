@@ -25,12 +25,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BroadcastReceiver br = new OrderBroadcastReceiver();
 
-        LocalBroadcastManager manager = LocalBroadcastManager.getInstance(this);
-        IntentFilter filter = new IntentFilter();
-        filter.addAction("New Order");
-        manager.registerReceiver(br, filter);
+        startService(new Intent(this,BroadcastReceiverService.class));
 
         setContentView(R.layout.activity_main);
 
