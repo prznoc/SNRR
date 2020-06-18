@@ -43,6 +43,9 @@ public class RentingActivity extends AppCompatActivity {
             Intent localIntent = new Intent("New Order")
                     .putExtra("Data",name + email + phone + postalAddress + dateFrom + dateTo);
             localBroadcastManager.sendBroadcast(localIntent);
+            final Intent send_intent = new Intent(this, ConfirmActivity.class);
+            send_intent.putExtra("product", product);
+            startActivity(send_intent);
         }
         else{
             Toast.makeText(getApplicationContext(),"Please accept our policy",Toast.LENGTH_LONG).show();
