@@ -34,8 +34,13 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         editsearch = findViewById(R.id.search);
         editsearch.setOnQueryTextListener(this);
 
+        dataBase = new DataBaseHelper(MainActivity.this);
+
         if (savedInstanceState != null) {
             products = savedInstanceState.getParcelableArrayList("products");
+        }
+        else{
+            updateProducts(dataBase.getAllProducts());
         }
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
@@ -44,9 +49,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        dataBase = new DataBaseHelper(MainActivity.this);
-
-        updateProducts(dataBase.getAllProducts());
     }
 
     @Override
