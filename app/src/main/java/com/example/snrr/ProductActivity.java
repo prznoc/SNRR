@@ -4,17 +4,11 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 public class ProductActivity extends AppCompatActivity {
 
@@ -40,8 +34,6 @@ public class ProductActivity extends AppCompatActivity {
         } else {
             // In portrait
         }
-
-
         ft.commit();
 
     }

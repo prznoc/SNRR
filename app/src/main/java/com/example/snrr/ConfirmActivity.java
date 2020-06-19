@@ -3,6 +3,8 @@ package com.example.snrr;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.snrr.MainActivity;
+import com.example.snrr.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -28,9 +30,5 @@ public class ConfirmActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-    }
-    @Override
-    public void onBackPressed() {
     }
 }

@@ -34,9 +34,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 COLUMN_NAME + " TEXT, " +
                 COLUMN_DESC + " TEXT, " +
                 COLUMN_PRICE + " DOUBLE,"+
-                COLUMN_IMAGE + " INT);";
+                COLUMN_IMAGE + " TEXT);";
         db.execSQL(createQuery);
-        //prepopulateDb();
+        prepopulateDb();
     }
 
     @Override
@@ -45,7 +45,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addProduct(String name, String desc, double price, Integer image) {
+    public void addProduct(String name, String desc, double price, String image) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -117,16 +117,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM " + TABLE_NAME);
     }
 
-    public void prepopulateDb(){
-        this.addProduct("Aparat Nikon", "Nikon D3100 lustrzanka z obiektywem, pokrowcem, ładowarką do baterii, kartą pamięci SanDisc 8 GB, przejściówką na karty pamięci i kablem USD. Aparat w stanie idealnym bez rys na obiektywie.", 120.0, getIdFromName("chochla"));
-        this.addProduct("Rower Kross", "Rower marki Kross w świetnym stanie. Koła 28 cali.", 52.0, getIdFromName("mortar"));
-        this.addProduct("Statyw fotograficzny", "Statyw Digipod", 15.0, getIdFromName("chochla"));
-        this.addProduct("Gitara akustyczna", "Gitara elektroakustyczna IBANEZ AEWC32 MOD", 86.50, getIdFromName("mortar"));
-        this.addProduct("Rower Giant Revel", "Rower marki Giant Revel 2, rama S, stan bardzo dobry.", 37.0, getIdFromName("chochla"));
-    }
-
-    private int getIdFromName(String name){
-        return context.getResources().getIdentifier(name , "drawable", context.getPackageName());
+    private void prepopulateDb(){
+        this.addProduct("Aparat Nikon", "Nikon D3100 lustrzanka z obiektywem, pokrowcem, ładowarką do baterii, kartą pamięci SanDisc 8 GB, przejściówką na karty pamięci i kablem USD. Aparat w stanie idealnym bez rys na obiektywie.", 120.0, "https://ireland.apollo.olxcdn.com/v1/files/3bpo0ugbozvp3-PL/image;s=1000x700");
+        this.addProduct("Rower Kross", "Rower marki Kross w świetnym stanie. Koła 28 cali.", 52.0, "https://ireland.apollo.olxcdn.com/v1/files/04vecewd94g3-PL/image;s=644x461");
+        this.addProduct("Statyw fotograficzny", "Statyw Digipod", 15.0, "https://ireland.apollo.olxcdn.com/v1/files/lmgr7ljw6p15-PL/image;s=644x461");
+        this.addProduct("Gitara akustyczna", "Gitara elektroakustyczna IBANEZ AEWC32 MOD", 86.50, "https://ireland.apollo.olxcdn.com/v1/files/xaojzmv6eip9-PL/image;s=1000x700");
+        this.addProduct("Rower Giant Revel", "Rower marki Giant Revel 2, rama S, stan bardzo dobry.", 37.0, "https://ireland.apollo.olxcdn.com/v1/files/h6t4azxv9m032-PL/image;s=1000x700");
     }
 
 }

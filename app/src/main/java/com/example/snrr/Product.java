@@ -15,13 +15,13 @@ public class Product implements Parcelable {
     private String name;
     private String description;
     private double price;
-    private int imageId;
+    private String image;
 
     protected Product(Parcel in) {
         name  = in.readString();
         description = in.readString();
         price = in.readDouble();
-        imageId = in.readInt();
+        image = in.readString();
     }
 
     public static final Creator<Product> CREATOR = new Creator<Product>() {
@@ -46,10 +46,6 @@ public class Product implements Parcelable {
         dest.writeString(name);
         dest.writeString(description);
         dest.writeDouble(price);
-        dest.writeInt(imageId);
-    }
-
-    public int getImage(){
-        return imageId;
+        dest.writeString(image);
     }
 }
