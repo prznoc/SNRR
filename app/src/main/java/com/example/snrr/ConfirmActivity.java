@@ -28,5 +28,9 @@ public class ConfirmActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+    @Override
+    public void onBackPressed() {
     }
 }

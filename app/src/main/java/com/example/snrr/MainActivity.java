@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.widget.SearchView;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     ArrayList<Product> products = new ArrayList<>();
     MyListAdapter adapter;
     RecyclerView recyclerView;
+    DataBaseHelper dataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +35,16 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         editsearch = findViewById(R.id.search);
         editsearch.setOnQueryTextListener(this);
 
+        dataBase = new DataBaseHelper(MainActivity.this);
+
+        dataBase.deleteAllData();
+        dataBase.prepopulateDb();
+
         if (savedInstanceState != null) {
             products = savedInstanceState.getParcelableArrayList("products");
+        }
+        else{
+            updateProducts(dataBase.getAllProducts());
         }
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
@@ -42,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-        }
+    }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -50,20 +60,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         savedInstanceState.putParcelableArrayList("products", products);
     }
 
-    private int getIdFromName(String name){
-        return getResources().getIdentifier(name , "drawable", getPackageName());
-    }
-
     @Override
     public boolean onQueryTextSubmit(String query) {
         editsearch.onActionViewCollapsed();
-        products.clear();
-        ArrayList<Product> new_products = new ArrayList<Product>(Arrays.asList(
-                new Product(22.2, getIdFromName("chochla"), "chochla", "To jest chochlabashdbajuhsydgyuashdiuashdniuahduiashdiuashdiuashduiashduiashdiauhdaiusdhiausd" +
-                        "shndiuahduisahjdiadaushdiuashdiuashduiahdiuashdiuadhaisudhasuidhasuidhauisdhaiusdhsiaudhjaiuhsu"),
-                new Product(12.2, getIdFromName("mortar"), "mortar", "This is MORTAR!!!")
-        ));
-        products.addAll(new_products);
+
+        updateProducts(dataBase.getProducts(query));
         adapter.notifyDataSetChanged();
         return false;
     }
@@ -73,5 +74,18 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         String text = newText;
         //adapter.filter(text);
         return false;
+    }
+
+    void updateProducts(Cursor cursor) {
+        products.clear();
+        if (cursor.getCount() != 0) {
+            while (cursor.moveToNext()) {
+                products.add(new Product(
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        Double.parseDouble(cursor.getString(3)),
+                        cursor.getInt(4)));
+            }
+        }
     }
 }
