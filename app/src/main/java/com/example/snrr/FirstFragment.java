@@ -10,6 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.snrr.Product;
+import com.example.snrr.R;
+import com.squareup.picasso.Picasso;
+
 public class FirstFragment extends Fragment {
 
     private Product product;
@@ -37,9 +41,14 @@ public class FirstFragment extends Fragment {
         TextView name = view.findViewById(R.id.textView2);
         TextView price = view.findViewById(R.id.textView3);
         ImageView photo = view.findViewById(R.id.imageView2);
-        String _price = String.format("%.2f", product.getPrice()) + "zł";
+        String _price = String.format("%.2f", product.getPrice()) + "zł/dzień";
         name.setText(product.getName());
         price.setText(_price);
-        photo.setImageResource(product.getImage());
+
+        Picasso.get()
+                .load(product.getImage())
+                .resize(600,0)
+                .onlyScaleDown()
+                .into(photo);
     }
 }

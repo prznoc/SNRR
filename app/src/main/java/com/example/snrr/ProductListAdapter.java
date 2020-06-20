@@ -8,20 +8,20 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 
-public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.myViewHolder>{
+public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.myViewHolder>{
     private ArrayList<Product> listdata;
     private Context context;
 
-
-
-    public MyListAdapter(Context context, ArrayList<Product> listdata) {
+    public ProductListAdapter(Context context, ArrayList<Product> listdata) {
         this.listdata = listdata;
         this.context = context;
     }
@@ -35,13 +35,21 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.myViewHold
 
     @Override
     public void onBindViewHolder(myViewHolder holder, int position) {
-        final Product myListData = listdata.get(position);
-        holder.textView.setText(listdata.get(position).getName());
-        String _price = String.format("%.2f", listdata.get(position).getPrice()) + "zł";
-        holder.price.setText(_price);
-        holder.imageView.setImageResource (listdata.get(position).getImage());
+        final Product currentProduct = listdata.get(position);
+
+        holder.textView.setText(currentProduct.getName());
+
+        holder.price.setText(String.format("%.2f", currentProduct.getPrice()) + "zł/dzień");
+
+        Picasso.get()
+                .load(currentProduct.getImage())
+                .resize(600,0)
+                .onlyScaleDown()
+                .into(holder.imageView);
+
         final Intent intent = new Intent(context, ProductActivity.class);
-        intent.putExtra("product", myListData);
+        intent.putExtra("product", currentProduct);
+
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
