@@ -17,11 +17,11 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 
-public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.myViewHolder>{
+public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.myViewHolder>{
     private ArrayList<Product> listdata;
     private Context context;
 
-    public MyListAdapter(Context context, ArrayList<Product> listdata) {
+    public ProductListAdapter(Context context, ArrayList<Product> listdata) {
         this.listdata = listdata;
         this.context = context;
     }
@@ -39,11 +39,11 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.myViewHold
 
         holder.textView.setText(currentProduct.getName());
 
-        holder.price.setText(String.format("%.2f", currentProduct.getPrice()) + "zł");
+        holder.price.setText(String.format("%.2f", currentProduct.getPrice()) + "zł/dzień");
 
         Picasso.get()
                 .load(currentProduct.getImage())
-                .resize(600,800)
+                .resize(600,0)
                 .onlyScaleDown()
                 .into(holder.imageView);
 

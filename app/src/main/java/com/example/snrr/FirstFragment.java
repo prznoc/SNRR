@@ -41,13 +41,13 @@ public class FirstFragment extends Fragment {
         TextView name = view.findViewById(R.id.textView2);
         TextView price = view.findViewById(R.id.textView3);
         ImageView photo = view.findViewById(R.id.imageView2);
-        String _price = String.format("%.2f", product.getPrice()) + "zł";
+        String _price = String.format("%.2f", product.getPrice()) + "zł/dzień";
         name.setText(product.getName());
         price.setText(_price);
 
         Picasso.get()
                 .load(product.getImage())
-                .resize(600,800)
+                .resize(600,0)
                 .onlyScaleDown()
                 .into(photo);
     }
