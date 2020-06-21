@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -17,10 +18,13 @@ public class OrderBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         createNotificationChannel(context);
+        Bundle bundle = intent.getExtras();
+        String name = bundle.getString("name");
+        String product_name = bundle.getString("product_name");
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(android.R.drawable.btn_star)
                 .setContentTitle("Order")
-                .setContentText("Your order has been confirmed")
+                .setContentText("Mr/Ms " + name + ", Your Order of " + product_name + " have been received.")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         notificationManager.notify(1, builder.build());
