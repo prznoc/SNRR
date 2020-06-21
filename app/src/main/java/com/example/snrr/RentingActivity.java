@@ -30,14 +30,19 @@ public class RentingActivity extends AppCompatActivity {
         CheckBox checkBox = findViewById(R.id.checkBox);
         if(checkBox.isChecked()) {
             Boolean proper_data = true;
-            EditText text = (EditText) findViewById(R.id.editTextTextPersonName);
-            String name = text.getText().toString();
+            EditText _name = (EditText) findViewById(R.id.editTextTextPersonName);
+            String name = _name.getText().toString();
             if (name.isEmpty()) proper_data = false;
-            String email = findViewById(R.id.editTextTextEmailAddress).toString();
-            String phone = findViewById(R.id.editTextPhone).toString();
-            String postalAddress = findViewById(R.id.editTextTextPostalAddress).toString();
-            String dateFrom = findViewById(R.id.editTextDate).toString();
-            String dateTo = findViewById(R.id.editTextDate2).toString();
+            EditText _email = (EditText) findViewById(R.id.editTextTextEmailAddress);
+            String email = _email.getText().toString();
+            EditText _phone = (EditText) findViewById(R.id.editTextPhone);
+            String phone = _phone.getText().toString();
+            EditText _postalAddress = (EditText) findViewById(R.id.editTextTextPostalAddress);
+            String postalAddress = _postalAddress.getText().toString();
+            EditText _dateFrom = (EditText) findViewById(R.id.editTextDate);
+            String dateFrom = _dateFrom.getText().toString();
+            EditText _dateTo = (EditText) findViewById(R.id.editTextDate2);
+            String dateTo = _dateTo.getText().toString();
             if(proper_data) {
                 LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(getApplicationContext());
                 Intent localIntent = new Intent("New Order")
