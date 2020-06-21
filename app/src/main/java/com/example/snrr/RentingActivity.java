@@ -15,7 +15,6 @@ import android.widget.Toast;
 public class RentingActivity extends AppCompatActivity {
 
     Product product;
-    private OrderBroadcastReceiver orderBroadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

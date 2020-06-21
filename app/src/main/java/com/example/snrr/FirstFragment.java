@@ -10,8 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.snrr.Product;
-import com.example.snrr.R;
 import com.squareup.picasso.Picasso;
 
 public class FirstFragment extends Fragment {
