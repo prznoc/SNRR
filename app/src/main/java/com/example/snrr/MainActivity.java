@@ -34,12 +34,15 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         editsearch = findViewById(R.id.search);
         editsearch.setOnQueryTextListener(this);
 
+
         dataBase = new DataBaseHelper(MainActivity.this);
 
         if (savedInstanceState != null) {
             products = savedInstanceState.getParcelableArrayList("products");
         }
         else{
+            dataBase.deleteAllData();
+            dataBase.prepopulateDb();
             updateProducts(dataBase.getAllProducts());
         }
 
